@@ -1,20 +1,48 @@
 <?php
 
     $tableauNombre = [ 0, 1, 2, 3, 4, 5, 6 ];
-    
-    echo count($tableauNombre);
 
-    function tableau_somme($p_tableau){
 
+    function sommeValeursDuTableau($pTableau)
+    {
+        //return array_sum($pTableau);
         $somme = 0;
-
-        for ($i=0; $i < count($p_tableau) ; $i++) { 
-            
-            $somme += $p_tableau[$i];
+        foreach($pTableau as $valeur)
+        {
+            $somme+=$valeur;
         }
         return $somme;
+    }
+
+    function moyenneValeursDuTableau($pTableau){
+
+        return sommeValeursDuTableau($pTableau)/count($pTableau);
+    }
+
+    function calculerEcartMoyenneAuCarre($pnombre,$pMoyenne){
+
+        return pow($pnombre-$pMoyenne,2);
+    }
+
+    function calculerSommeEcartMoyenneAuCarre($pTableau){
+
+        $moyenne = moyenneValeursDuTableau($pTableau);
+        $somme = 0;
+
+        foreach($pTableau as $valeur)
+        {
+            $somme+=calculerEcartMoyenneAuCarre($valeur,$moyenne);
+        }
+        return $somme;
+        
+    }
+
+    function calculerEcartType($pTableau){
+
+    return sqrt(calculerSommeEcartMoyenneAuCarre($pTableau)/count($pTableau));
     
     }
+
 
 ?>
 
@@ -29,13 +57,13 @@
 </head>
 <body>
     
-    <p>
-       la somme et <?=tableau_somme($tableauNombre)?>
-    </p>
+    <?php var_dump($tableauNombre);?>
 
-    <p>
-       la moyenne et <?=tableau_somme($tableauNombre) / count($tableauNombre)?>
-    </p>
+    Somme = <?=sommeValeursDuTableau($tableauNombre)?><br>
+
+    Moyenne = <?=moyenneValeursDuTableau($tableauNombre)?><br>
+
+    EcartType =<?=calculerEcartType($tableauNombre) ?>
 
 </body>
 </html>
