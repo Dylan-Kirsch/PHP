@@ -24,7 +24,16 @@
 
     <?php
 
-        afficherPhotos()
+        if (isset($_GET['id'])) {
+
+           afficherUnePhotos($_GET['id']);
+
+        }else {
+
+        afficherPhotos();
+
+        } 
+        
 
     ?>
 

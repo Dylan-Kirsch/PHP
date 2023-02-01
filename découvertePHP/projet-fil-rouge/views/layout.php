@@ -18,12 +18,8 @@
 </head>
 
 <body>
-
-    <nav>Bar nav</nav>
-    <header>header</header>  
+ 
     <main><?=$content?></main>
-    <footer>lepieddepage</footer>
-
 
 </body>
 </html>

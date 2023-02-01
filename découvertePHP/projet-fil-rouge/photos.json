@@ -1,22 +1,22 @@
 {
     "photos": [
         {
-            "titre":"Forspoken",
-            "photos":"Image",
+            "titre":"Forspoken1",
+            "photos":"FORSPOKEN_LOGO_.png",
             "legend":"déscription",
             "tag":"Playstation"
         },
 
         {
-            "titre":"Forspoken",
-            "photos":"Image",
+            "titre":"Forspoken2",
+            "photos":"FORSPOKEN_LOGO_.png",
             "legend":"déscription",
             "tag":"Playstation"
         },
 
         {
-            "titre":"Forspoken",
-            "photos":"Image",
+            "titre":"Forspoken3",
+            "photos":"FORSPOKEN_LOGO_.png",
             "legend":"déscription",
             "tag":"Playstation"
         }
