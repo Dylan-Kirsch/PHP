@@ -5,7 +5,10 @@
     require_once('reponse.php');
     require_once('photoDb.php');
     require_once('photo.php');
+    require('utilisateurDb.php');
+    require('utilisateur.php');
     require_once('photoController.php');
+    require_once('utilisateurController.php');
 
 ?>
 
@@ -37,6 +40,16 @@
             afficherPhotos();
 
         } 
+
+        if (isset($_GET['id'])) {
+
+            afficherUnUtilisateur($_GET['id']);
+ 
+         }else {
+ 
+            afficherUtilisateurs();
+ 
+         } 
         
 
     ?>

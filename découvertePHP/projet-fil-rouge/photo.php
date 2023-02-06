@@ -18,11 +18,6 @@
 
         }
 
-        public function __tostring() {
-
-        return json_encode($this);
-
-        }
     }
 
 ?>
