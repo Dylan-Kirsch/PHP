@@ -26,7 +26,6 @@
         $photos = PhotoDB::lister();
         foreach ($photos as $photo) {
 
-            $i = $photo->id;
             include('views\cardPhoto.php');
 
         }
@@ -40,19 +39,29 @@
     function afficherUnePhotos($pId)
     {
 
+        // ob_start();
+
+        // $json = file_get_contents('photos.json');
+        // $photoJson = json_decode($json);
+        // $photo = new Photo(
+        //         $pId,
+        //         $photoJson->photos[$pId]->titre,
+        //         $photoJson->photos[$pId]->photos,
+        //         $photoJson->photos[$pId]->legend,
+        //         $photoJson->photos[$pId]->tag
+        // );
+
+        // include 'views/vuePhoto.php';
+        // $content = ob_get_clean();
+
         ob_start();
 
-        $json = file_get_contents('photos.json');
-        $photoJson = json_decode($json);
-        $photo = new Photo(
-                $pId,
-                $photoJson->photos[$pId]->titre,
-                $photoJson->photos[$pId]->photos,
-                $photoJson->photos[$pId]->legend,
-                $photoJson->photos[$pId]->tag
-        );
+        $photo = PhotoDB::lire($pId);
+        if ($photo)
+            include 'views/vuePhoto.php';
+        else
+            include('views\photoNonTrouvee.php');
 
-        include 'views/vuePhoto.php';
         $content = ob_get_clean();
         include 'views/layout.php';
 
