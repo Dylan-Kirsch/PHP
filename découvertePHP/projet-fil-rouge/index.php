@@ -2,6 +2,7 @@
 
     require_once('config.php');
     require_once('database.php');
+    require_once('reponse.php');
     require_once('photoDb.php');
     require_once('photo.php');
     require_once('photoController.php');

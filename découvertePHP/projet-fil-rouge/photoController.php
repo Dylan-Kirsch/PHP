@@ -5,30 +5,20 @@
 
         ob_start();
 
-        // $json = file_get_contents('photos.json');
-        // $photoJson = json_decode($json);
-        // $i = 0;
+        $reponse = PhotoDB::lister();
 
-        // foreach ($photoJson->photos as $photoJson) {
+        if ($reponse->isSuccessfull())
+        {
+            $listePhotos = $reponse->getData();
+            foreach ($listePhotos as $photo) 
+            {
 
-        //     $photo = new Photo(
-        //             $i,
-        //             $photoJson->titre,
-        //             $photoJson->photos,
-        //             $photoJson->legend,
-        //             $photoJson->tag
-        //     );
-        //     $i++;
-        //     include('views/cardPhoto.php');
+                include('views\cardPhoto.php');
 
-        // }
-
-        $photos = PhotoDB::lister();
-        foreach ($photos as $photo) {
-
-            include('views\cardPhoto.php');
-
-        }
+            }
+        } 
+        else
+        include('views\afficherException.php');
 
         $content = ob_get_clean();
         include 'views/layout.php';
@@ -39,29 +29,22 @@
     function afficherUnePhotos($pId)
     {
 
-        // ob_start();
-
-        // $json = file_get_contents('photos.json');
-        // $photoJson = json_decode($json);
-        // $photo = new Photo(
-        //         $pId,
-        //         $photoJson->photos[$pId]->titre,
-        //         $photoJson->photos[$pId]->photos,
-        //         $photoJson->photos[$pId]->legend,
-        //         $photoJson->photos[$pId]->tag
-        // );
-
-        // include 'views/vuePhoto.php';
-        // $content = ob_get_clean();
-
         ob_start();
 
-        $photo = PhotoDB::lire($pId);
-        if ($photo)
-            include 'views/vuePhoto.php';
-        else
-            include('views\photoNonTrouvee.php');
+        $reponse = PhotoDB::lire($pId);
 
+        if ($reponse->isSuccessfull())
+        {
+            $photo = $reponse->getData();
+            if ($photo)
+                include 'views/vuePhoto.php';
+        
+            else
+                include('views\photoNonTrouvee.php');
+        }
+        else
+        include('views\afficherException.php');
+        
         $content = ob_get_clean();
         include 'views/layout.php';
 
