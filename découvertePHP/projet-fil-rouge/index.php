@@ -1,5 +1,8 @@
-<?php 
+<?php
 
+    require_once('config.php');
+    require_once('database.php');
+    require_once('photoDb.php');
     require_once('photo.php');
     require_once('photoController.php');
 
@@ -30,7 +33,7 @@
 
         }else {
 
-        afficherPhotos();
+            afficherPhotos();
 
         } 
         

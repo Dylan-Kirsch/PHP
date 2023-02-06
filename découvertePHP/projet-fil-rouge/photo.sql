@@ -4,7 +4,7 @@ CREATE DATABASE IF NOT EXISTS myprojetred;
 CREATE TABLE IF NOT EXISTS PHOTOS 
 (
 
-    idrecette INT primary key,
+    id INT primary key,
     titre VARCHAR(255) NOT NULL,
     legend TEXT NOT NULL,
     photo VARCHAR(255) NOT NULL,
