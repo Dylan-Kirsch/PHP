@@ -31,25 +31,25 @@
 
     <?php
 
-        if (isset($_GET['id'])) {
-
+        if (isset($_GET['id'])) 
+        {
            afficherUnePhotos($_GET['id']);
-
-        }else {
-
+        }
+        else 
+        {
             afficherPhotos();
-
         } 
 
-        if (isset($_GET['id'])) {
+        // UTILISATEURS
 
+        if (isset($_GET['id'])) 
+        {
             afficherUnUtilisateur($_GET['id']);
- 
-         }else {
- 
+        }
+        else 
+        {
             afficherUtilisateurs();
- 
-         } 
+        } 
         
 
     ?>
