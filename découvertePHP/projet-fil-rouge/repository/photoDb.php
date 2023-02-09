@@ -9,19 +9,25 @@
             try 
             {
             
-                $stmt = Database::getInstance()->query("select * from PHOTOS;");
+                $stmt = Database::getInstance()->query("SELECT *, utilisateurs.id as 'idUtilisateur',photos.id as 'idphotos' FROM PHOTOS,UTILISATEURs WHERE UTILISATEURs.ID = PHOTOS.num_utilisateur;");
                 $resultat = $stmt->fetchall();
                 $listePhotos = new ArrayObject();
 
                 foreach ($resultat as $key => $value) {
 
+                    $utilisateur = new Utilisateur(
+                        $value['id'], 
+                        $value['nom'], 
+                        $value['prenom']
+                    );
 
                     $photo = new Photo(
                         $value['id'],
                         $value['titre'],
                         $value['photo'],
                         $value['legend'],
-                        $value['tag']
+                        $value['tag'],
+                        $utilisateur
                     );
                 
                     $listePhotos->append($photo);
@@ -51,18 +57,28 @@
             
             try{
 
-                $stmt = Database::getInstance()->query('SELECT * FROM PHOTOS WHERE ID ='.$pId.";");
+                $stmt = Database::getInstance()->query("SELECT *, utilisateurs.id as 'idUtilisateur',photos.id as 'idphotos' FROM PHOTOS,UTILISATEURs WHERE UTILISATEURs.ID = PHOTOS.num_utilisateur AND PHOTOS.ID =".$pId.";");
                 $value = $stmt->fetch();
                 $resultat = new ArrayObject();
 
                 if ($value!=false)
                 {
+
+                    $utilisateur = new Utilisateur(
+                        $value['id'], 
+                        $value['nom'], 
+                        $value['prenom']
+                    );
+
+                    // var_dump($utilisateur);
+
                     $photo = new Photo(
                         $value['id'],
                         $value['titre'],
                         $value['photo'],
                         $value['legend'],
-                        $value['tag']
+                        $value['tag'],
+                        $utilisateur
                     );
 
                     $resultat->append($photo);

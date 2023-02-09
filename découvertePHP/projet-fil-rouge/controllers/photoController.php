@@ -12,12 +12,21 @@
             $listePhotos = $reponse->getData();
 
             if ($listePhotos)
-                
-                foreach ($listePhotos as $photo) 
-
                 {
-                    include('views\cardPhoto.php');
-                } 
+                    foreach ($listePhotos as $key=>$photo) 
+
+                    {
+                if ($key == 0)
+                    $active = "active";
+                            else
+                        $active ="";
+                        include('views\slidePhoto.php');
+                    } 
+                    $images = ob_get_clean();
+                    ob_start();
+                    include('views\caroussel.php');
+                }
+                
                 else
                     include 'views\photoNonTrouvee.php';
         } 

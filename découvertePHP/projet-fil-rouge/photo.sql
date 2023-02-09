@@ -13,3 +13,13 @@ CREATE TABLE IF NOT EXISTS PHOTOS
 )
 
 INSERT INTO PHOTOS (titre,legend,photo,tag)VALUES("Forspoken","Description","FORSPOKEN_LOGO_.png","Playstation")
+
+
+DROP TABLE IF EXISTS Utilisateurs;
+CREATE TABLE IF NOT EXISTS Utilisateurs
+{
+    id INT primary key auto_increment,
+    nom VARCHAR(255) NOT NULL,
+    prenom VARCHAR(255) NOT NULL
+};
+INSERT INTO Utilisateurs (nom,prenom)values('Kirsch','Dylan');

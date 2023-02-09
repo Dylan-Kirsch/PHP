@@ -9,4 +9,6 @@ CREATE TABLE IF NOT EXISTS UTILISATEURS
 
 );
 
-INSERT INTO UTILISATEURS (nom,prenom)VALUES("Dylan","Kirsch")
+INSERT INTO UTILISATEURS (nom,prenom)VALUES
+(1, 'Dylan', 'Kirsch'),
+(2, 'BRU', 'Thierry');
