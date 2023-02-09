@@ -31,27 +31,37 @@
 
     <?php
 
-        if (isset($_GET['id'])) 
-        {
-           afficherUnePhotos($_GET['id']);
-        }
-        else 
-        {
-            afficherPhotos();
-        } 
+        if (isset($_GET['page']))
+                    $page = $_GET['page'];
+                else
+                    $page = 'photo';
 
-        // UTILISATEURS
+        switch($page)
+        {
 
-        if (isset($_GET['id'])) 
-        {
-            afficherUnUtilisateur($_GET['id']);
+            case 'photo':
+
+                if (isset($_GET['id'])) 
+                    afficherUnePhotos($_GET['id']);
+                else
+                    afficherPhotos();
+                break;
+
+            case 'utilisateur':
+
+                if (isset($_GET['id']))
+                    afficherUnUtilisateur($_GET['id']);
+                else
+                    afficherUtilisateurs();
+                break;
+
+            default:
+                afficherPhotos();
+            break;
+
         }
-        else 
-        {
-            afficherUtilisateurs();
-        } 
+    
         
-
     ?>
 
     

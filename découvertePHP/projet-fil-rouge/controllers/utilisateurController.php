@@ -14,6 +14,7 @@
             {
 
                 include('views\afficherUtilisateur.php');
+                include 'views\cardUtilisateur.php';
 
             }
         } 
@@ -44,7 +45,7 @@
 
             }
             else
-                include('views\photoNonTrouvee.php');
+                include('views\utilisateurNonTrouvee.php');
         }
         else
         include('views\afficherException.php');

@@ -4,6 +4,6 @@
     <h5 class="card-title"><?=$photo->titre?></h5>
     <p class="card-text"><?=$photo->legend?></p>
     
-    <a href="index.php?id=<?=$photo->id?>" class="btn btn-primary">Go somewhere</a>
+    <a href="index.php?page=photo&id=<?=$photo->id?>" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
