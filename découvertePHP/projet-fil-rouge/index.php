@@ -1,14 +1,14 @@
 <?php
 
-    require_once('config.php');
-    require_once('database.php');
-    require_once('reponse.php');
-    require_once('photoDb.php');
-    require_once('photo.php');
-    require('utilisateurDb.php');
-    require('utilisateur.php');
-    require_once('photoController.php');
-    require_once('utilisateurController.php');
+    require_once('config\config.php');
+    require_once('repository\database.php');
+    require_once('repository\reponse.php');
+    require_once('repository\photoDb.php');
+    require_once('models\photo.php');
+    require('repository\utilisateurDb.php');
+    require('models\utilisateur.php');
+    require_once('controllers\photoController.php');
+    require_once('controllers\utilisateurController.php');
 
 ?>
 

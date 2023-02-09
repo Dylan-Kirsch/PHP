@@ -1,19 +1,19 @@
 <?php
 
-    function afficherPhotos()
+    function afficherUtilisateurs()
     {
 
         ob_start();
 
-        $reponse = PhotoDB::lister();
+        $reponse = UtilisateursDB::lister();
 
         if ($reponse->isSuccessfull())
         {
-            $listePhotos = $reponse->getData();
-            foreach ($listePhotos as $photo) 
+            $listeUtilisateur = $reponse->getData();
+            foreach ($listeUtilisateur as $utilisateur) 
             {
 
-                include('views\cardPhoto.php');
+                include('views\afficherUtilisateur.php');
 
             }
         } 
@@ -26,19 +26,23 @@
     }
 
 
-    function afficherUnePhotos($pId)
+    function afficherUnUtilisateur($pId)
     {
 
         ob_start();
 
-        $reponse = PhotoDB::lire($pId);
+        $reponse = UtilisateursDB::lire($pId);
 
         if ($reponse->isSuccessfull())
         {
-            $photo = $reponse->getData();
-            if ($photo)
-                include 'views/vuePhoto.php';
-        
+
+            if ($reponse->isDataFound())
+            {
+
+                $utilisateur = $reponse->getData()[0];
+                include 'views\afficherUtilisateur.php';
+
+            }
             else
                 include('views\photoNonTrouvee.php');
         }

@@ -3,7 +3,7 @@
     class PhotoDB
     {
 
-        static function lister()
+        static public function lister():Reponse
         {
 
             try 
@@ -15,7 +15,6 @@
 
                 foreach ($resultat as $key => $value) {
 
-                    // var_dump($value);
 
                     $photo = new Photo(
                         $value['id'],
@@ -25,7 +24,6 @@
                         $value['tag']
                     );
                 
-                    // var_dump($photo);
                     $listePhotos->append($photo);
 
                 }
@@ -38,23 +36,24 @@
             {
 
                 //print_r('Gros Problème'.$e->getMessage());
-                return new Reponse(false,$e);
+                return new Reponse(new ArrayObject(),$e);
 
             }
 
             
         }
 
-        static function lire($pId)
+        static public function lire(int $pId):Reponse
         {
 
             if (!is_numeric($pId)||$pId<=0)
-                return new Reponse(false,NULL);
+                return new Reponse(new ArrayObject());
             
             try{
 
                 $stmt = Database::getInstance()->query('SELECT * FROM PHOTOS WHERE ID ='.$pId.";");
                 $value = $stmt->fetch();
+                $resultat = new ArrayObject();
 
                 if ($value!=false)
                 {
@@ -65,18 +64,19 @@
                         $value['legend'],
                         $value['tag']
                     );
-                
-                    return new Reponse($photo);
+
+                    $resultat->append($photo);
+                    return new Reponse($resultat);
                 } 
                 else
-                return new Reponse(false, NULL);
+                return new Reponse(new ArrayObject());
             }
 
             catch(PDOException $e)
             {
 
-                //print_r('Gros Problème'.$e->getMessage());
-                return new Reponse(false,$e);
+                print_r('Gros Problème'.$e->getMessage());
+                return new Reponse(new ArrayObject(),$e);
                 
             }
         }   
