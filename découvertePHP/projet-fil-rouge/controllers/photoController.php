@@ -67,4 +67,32 @@
 
     }
 
+    function ajouterGalerie()
+    {
+    // Début de la mise en cache
+    ob_start();
+    
+    if (count($_POST)==0)
+    {
+        $utilisateurs = UtilisateursDB::lister()->getData();
+        include 'views\formulaire.php';
+    }
+    else
+    {
+        $resultat = PhotoDB::creer($_POST);
+        if ($resultat)
+            include 'views\galerieAjouter.php';
+        else
+        {
+            $utilisateurs = UtilisateursDB::lister()->getData();
+            include 'views\formulaire.php';
+        }
+            
+    }
+
+    $content = ob_get_clean();
+    // fin mise en cache et affichage du layout avec la vue
+    include 'views/layout.php';
+    }
+
 ?>

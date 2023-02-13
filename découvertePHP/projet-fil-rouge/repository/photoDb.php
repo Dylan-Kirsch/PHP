@@ -95,6 +95,30 @@
                 return new Reponse(new ArrayObject(),$e);
                 
             }
-        }   
+        }
+        
+        static public function creer($pData):bool
+        {
+            var_dump($pData);
+            try
+            {
+                $stmt = Database::getInstance()->prepare("INSERT INTO PHOTOS (titre,legend,photo,tag,num_utilisateur)VALUES(:titre,:legend,:photo,:tag,:idUtilisateur);");
+                
+                // $stmt->bindValue(':titre',$pData['titre']);
+                // $stmt->bindValue(':legend',$pData['legend']);
+                // $stmt->bindValue(':photo',$pData['photo']);
+                // $stmt->bindValue(':tag',$pData['tag']);
+                // $stmt->bindValue(':idUtilisateur',$pData['idUtilisateur']);
+
+                return $stmt->execute($pData);
+            }
+
+            catch (PDOException $e)
+            {
+                echo $e->getMessage();
+                return false;
+            }
+            
+        }
     }
 ?>
