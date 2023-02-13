@@ -5,14 +5,17 @@
     require_once('repository\reponse.php');
     require_once('repository\photoDb.php');
     require_once('models\photo.php');
+    require_once('models\categorie.php');
+    require_once('repository\categorieDb.php');
+    require_once('controllers\categorieController.php');
     require('repository\utilisateurDb.php');
     require('models\utilisateur.php');
     require_once('controllers\photoController.php');
     require_once('controllers\utilisateurController.php');
 
-?>
 
-<?php
+
+    session_start();
 
     if (isset($_GET['page']))
                 $page = $_GET['page'];
@@ -40,6 +43,18 @@
         case 'ajouter-galerie':
                 ajouterGalerie();
             break;
+
+        case 'categorie':
+
+            if (isset($_GET['id'])) 
+                afficherUneCategories($_GET['id']);
+            else
+                afficherCategorie();
+            break;
+        case 'ajouter-categorie':
+                ajouterCategorie();
+        break;
+
         default:
             afficherPhotos();
         break;

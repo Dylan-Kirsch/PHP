@@ -99,18 +99,31 @@
         
         static public function creer($pData):bool
         {
-            var_dump($pData);
+        
+        //  array(6) { ["titre"]=> string(28) "ffffffffffffffffffffffffffff" ["photo"]=> string(9) "yjè(j(j(" ["legend"]=> string(7) ",jhgfcx" ["tag"]=> string(6) "bygvcd" ["idUtilisateur"]=> string(1) "1" ["codesecret"]=> string(60)
+            if (!(isset($pData['titre'])&&(strlen($pData['titre'])>5)))
+                return false;
+                if (!(isset($pData['legend'])&&(strlen($pData['legend'])>5)))
+                return false;
+                if (!(isset($pData['photo'])&&(strlen($pData['photo'])>5)))
+                return false;
+                if (!(isset($pData['tag'])&&(strlen($pData['tag'])>5)))
+                return false;
+                if (!(isset($pData['idUtilisateur'])&& is_numeric($pData['idUtilisateur'])))
+                return false;
+
             try
             {
-                $stmt = Database::getInstance()->prepare("INSERT INTO PHOTOS (titre,legend,photo,tag,num_utilisateur)VALUES(:titre,:legend,:photo,:tag,:idUtilisateur);");
+                $stmt = Database::getInstance()->prepare("INSERT INTO PHOTOS (titre,legend,photo,tag,num_utilisateur)
+                VALUES(:titre,:legend,:photo,:tag,:idUtilisateur);");
                 
-                // $stmt->bindValue(':titre',$pData['titre']);
-                // $stmt->bindValue(':legend',$pData['legend']);
-                // $stmt->bindValue(':photo',$pData['photo']);
-                // $stmt->bindValue(':tag',$pData['tag']);
-                // $stmt->bindValue(':idUtilisateur',$pData['idUtilisateur']);
+                 $stmt->bindValue(':titre',$pData['titre']);
+                 $stmt->bindValue(':legend',$pData['legend']);
+                 $stmt->bindValue(':photo',$pData['photo']);
+                 $stmt->bindValue(':tag',$pData['tag']);
+                 $stmt->bindValue(':idUtilisateur',$pData['idUtilisateur']);
 
-                return $stmt->execute($pData);
+                return $stmt->execute();
             }
 
             catch (PDOException $e)

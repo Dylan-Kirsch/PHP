@@ -1,34 +1,21 @@
 <?php
 
-    function afficherPhotos()
+    function afficherCategorie()
     {
 
         ob_start();
 
-        $reponse = PhotoDB::lister();
+        $reponse = CategorieDB::lister();
 
         if ($reponse->isSuccessfull())
         {
-            $listePhotos = $reponse->getData();
+            $listeCategorie = $reponse->getData();
+            foreach ($listeCategorie as $categorie) 
+            {
 
-            if ($listePhotos)
-                {
-                    foreach ($listePhotos as $key=>$photo) 
+                include 'views\categorieFormulaire.php';
 
-                    {
-                if ($key == 0)
-                    $active = "active";
-                            else
-                        $active ="";
-                        include('views\slidePhoto.php');
-                    } 
-                    $images = ob_get_clean();
-                    ob_start();
-                    include('views\caroussel.php');
-                }
-                
-                else
-                    include 'views\photoNonTrouvee.php';
+            }
         } 
         else
         include('views\afficherException.php');
@@ -39,12 +26,12 @@
     }
 
 
-    function afficherUnePhotos($pId)
+    function afficherUneCategories($pId)
     {
 
         ob_start();
 
-        $reponse = PhotoDB::lire($pId);
+        $reponse = CategorieDB::lire($pId);
 
         if ($reponse->isSuccessfull())
         {
@@ -54,7 +41,7 @@
                 //var_dump($reponse->getdata()->offsetGet(0));
                 $photo = $reponse->getData()[0];
             
-                include 'views/vuePhoto.php';
+                include 'views\categorieFormulaire.php';
             }
             else
                 include 'views\photoNonTrouvee.php';
@@ -67,28 +54,29 @@
 
     }
 
-    function ajouterGalerie()
+
+    function ajouterCategorie()
     {
     // Début de la mise en cache
     ob_start();
     
     if (count($_POST)==0)
     {
-        $utilisateurs = UtilisateursDB::lister()->getData();
+        $categories = CategorieDB::lister()->getData();
         $_SESSION['codesecret']=password_hash((time()+566655545), PASSWORD_DEFAULT);
-        include 'views\formulaire.php';
+        include 'views\categorieFormulaire.php';
     }
     else
     {   
         if ($_POST['codesecret'] && $_POST['codesecret'] == $_SESSION['codesecret'])
         {
-            $resultat = PhotoDB::creer($_POST);
+            $resultat = CategorieDB::creer($_POST);
             if ($resultat)
                 include 'views\galerieAjouter.php';
             else
             {
-                $utilisateurs = UtilisateursDB::lister()->getData();
-                include 'views\formulaire.php';
+                $utilisateurs = CategorieDB::lister()->getData();
+                include 'views\categorieFormulaire.php';
             }
         }
         else
@@ -100,5 +88,6 @@
     // fin mise en cache et affichage du layout avec la vue
     include 'views/layout.php';
     }
+
 
 ?>

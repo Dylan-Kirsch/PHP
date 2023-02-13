@@ -1,3 +1,13 @@
+.formulaire {
+    display: flex;
+    justify-content: center;
+    margin: 7%;
+}
+
+textarea {
+    height: 108px;
+}
+
 img {
     height: 44vh;
 }
