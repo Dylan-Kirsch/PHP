@@ -54,7 +54,7 @@
 
     }
 
-
+ 
     function ajouterCategorie()
     {
     // Début de la mise en cache

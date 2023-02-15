@@ -54,7 +54,7 @@
         case 'ajouter-categorie':
                 ajouterCategorie();
         break;
-
+ 
         default:
             afficherPhotos();
         break;

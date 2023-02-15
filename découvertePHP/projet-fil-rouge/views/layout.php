@@ -38,9 +38,7 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" href="index.php?page=utilisateur">Utilisateurs</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="index.php?page=categorie">Categories</a>
-                    </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Les galeries
@@ -51,6 +49,9 @@
                             </li>
                             <li>
                                 <a class="dropdown-item" href="index.php?page=ajouter-galerie">Ajouter galeries</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="index.php?page=ajouter-categorie">Ajouter Categories</a>
                             </li>
                         </ul>
                     </li>
