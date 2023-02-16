@@ -75,7 +75,7 @@
                 include 'views\galerieAjouter.php';
             else
             {
-                $utilisateurs = CategorieDB::lister()->getData();
+                $categories = CategorieDB::lister()->getData();
                 include 'views\categorieFormulaire.php';
             }
         }
