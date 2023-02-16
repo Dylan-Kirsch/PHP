@@ -6,6 +6,7 @@
             
             <input class="form-control" type="text" name="libelle" placeholder="Titre de la categorie" value="<?=isset($_POST['libelle'])?$_POST['libelle']:"";?>">
 
+
             <button>Créer</button>
 
         </fieldset>
