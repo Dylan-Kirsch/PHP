@@ -12,11 +12,12 @@
                 $resultat = $stmt->fetchall();
                 $listeCategorie= new ArrayObject();
 
-                foreach ($resultat as $key => $value) {
+                foreach ($resultat as $key => $value) 
+                {
 
                     $categorie = new Categorie(
                         $value['id'],
-                        $value['libelle'],
+                        $value['libelle']
                     );
                 
                     $listeCategorie->append($categorie);
@@ -78,16 +79,15 @@
         {
         
         //  array(6) { ["titre"]=> string(28) "ffffffffffffffffffffffffffff" ["photo"]=> string(9) "yjè(j(j(" ["legend"]=> string(7) ",jhgfcx" ["tag"]=> string(6) "bygvcd" ["idUtilisateur"]=> string(1) "1" ["codesecret"]=> string(60)
-            if (!(isset($pData['libelle'])&&(strlen($pData['libelle']>5))))
+            if (!(isset($pData['libelle'])&&(strlen($pData['libelle']>=4))))
                 return false;
 
             try
             {
-                $stmt = Database::getInstance()->prepare("INSERT INTO CATEGORIES (libelle, num_categorie)
-                VALUES(:libelle,:idCategorie);");
+                $stmt = Database::getInstance()->prepare("INSERT INTO CATEGORIES (libelle)
+                VALUES(:libelle;");
                 
                  $stmt->bindValue(':libelle',$pData['libelle']);
-                 $stmt->bindValue(':idCategorie',$pData['idCategorie']);
 
                 return $stmt->execute();
             }
@@ -102,17 +102,7 @@
 
 
 
-
-
-
-
     }
-
-
-
-
-
-
 
 
 ?>

@@ -54,7 +54,7 @@
                 //var_dump($reponse->getdata()->offsetGet(0));
                 $photo = $reponse->getData()[0];
             
-                include 'views/vuePhoto.php';
+                include 'views\slidePhoto.php';
             }
             else
                 include 'views\photoNonTrouvee.php';

@@ -7,5 +7,8 @@
   <li>
     <?=$utilisateur->prenom?>
   </li>
+  <li>
+    <?=$categorie->libelle?>
+  </li>
 
 </ul>

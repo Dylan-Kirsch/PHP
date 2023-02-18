@@ -10,12 +10,16 @@
         if ($reponse->isSuccessfull())
         {
             $listeCategorie = $reponse->getData();
-            foreach ($listeCategorie as $categorie) 
-            {
 
-                include 'views\categorieFormulaire.php';
+            if ($listeCategorie)
+                foreach ($listeCategorie as $categorie) 
+                {
 
-            }
+                    include 'views\categorieFormulaire.php';
+
+                }
+            else
+                include 'views\photoNonTrouvee.php';
         } 
         else
         include('views\afficherException.php');
@@ -39,9 +43,9 @@
             if ($reponse->isDataFound())
             {
                 //var_dump($reponse->getdata()->offsetGet(0));
-                $photo = $reponse->getData()[0];
+                $categorie = $reponse->getData()[0];
             
-                include 'views\categorieFormulaire.php';
+                include 'views\afficherUtilisateur.php';
             }
             else
                 include 'views\photoNonTrouvee.php';
@@ -75,7 +79,7 @@
                 include 'views\galerieAjouter.php';
             else
             {
-                $categories = CategorieDB::lister()->getData();
+                // $categories = CategorieDB::lister()->getData();
                 include 'views\categorieFormulaire.php';
             }
         }
