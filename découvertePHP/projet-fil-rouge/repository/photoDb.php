@@ -1,5 +1,5 @@
 <?php
-
+ 
     class PhotoDB
     {
 
@@ -9,7 +9,9 @@
             try 
             {
             
-                $stmt = Database::getInstance()->query("SELECT *, utilisateurs.id as 'idUtilisateur',photos.id as 'idphotos' FROM PHOTOS,UTILISATEURs WHERE UTILISATEURs.ID = PHOTOS.num_utilisateur;");
+                $stmt = Database::getInstance()->query("SELECT *, utilisateurs.id as 'idUtilisateur',photos.id as 'idphotos' 
+                                                        FROM PHOTOS,UTILISATEURs 
+                                                        WHERE UTILISATEURS.ID = PHOTOS.num_utilisateur;");
                 $resultat = $stmt->fetchall();
                 $listePhotos = new ArrayObject();
 
@@ -57,7 +59,10 @@
             
             try{
 
-                $stmt = Database::getInstance()->query("SELECT *, utilisateurs.id as 'idUtilisateur',photos.id as 'idphotos' FROM PHOTOS,UTILISATEURs WHERE UTILISATEURs.ID = PHOTOS.num_utilisateur AND PHOTOS.ID =".$pId.";");
+                $stmt = Database::getInstance()->query("SELECT *, utilisateurs.id as 'idUtilisateur',photos.id as 'idphotos' 
+                                                        FROM PHOTOS,UTILISATEURs 
+                                                        WHERE UTILISATEURs.ID = PHOTOS.num_utilisateur 
+                                                        AND PHOTOS.ID =".$pId.";");
                 $value = $stmt->fetch();
                 $resultat = new ArrayObject();
 

@@ -35,7 +35,7 @@
 
         </fieldset>
         
-        <input type="hidden" name="codesecret" value="<?=$_SESSION['codesecret'];?>">
+         
 
 
     </form>

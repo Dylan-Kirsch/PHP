@@ -33,27 +33,28 @@
                 afficherPhotos();
             break;
 
-        case 'utilisateur':
+        // case 'utilisateur':
 
-            if (isset($_GET['id']))
-                afficherUnUtilisateur($_GET['id']);
-            else
-                afficherUtilisateurs();
-            break;
-        case 'ajouter-galerie':
-                ajouterGalerie();
-            break;
+        //     if (isset($_GET['id']))
+        //         afficherUnUtilisateur($_GET['id']);
+        //     else
+        //         afficherUtilisateurs();
+        //     break;
 
-        case 'categorie':
+        // case 'ajouter-galerie':
+        //         ajouterGalerie();
+        //     break;
 
-            if (isset($_GET['id'])) 
-                afficherUneCategories($_GET['id']);
-            else
-                afficherCategorie();
-            break;
-        case 'ajouter-categorie':
-                ajouterCategorie();
-        break;
+        // case 'categorie':
+
+        //     if (isset($_GET['id'])) 
+        //         afficherUneCategories($_GET['id']);
+        //     else
+        //         afficherCategorie();
+        //     break;
+        // case 'ajouter-categorie':
+        //         ajouterCategorie();
+        // break;
 
         default:
             afficherPhotos();
