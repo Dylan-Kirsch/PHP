@@ -114,7 +114,7 @@
                 return false;
                 if (!(isset($pData['tag'])&&(strlen($pData['tag'])>5)))
                 return false;
-                if (!(isset($pData['idUtilisateur'])&& is_numeric($pData['idUtilisateur'])))
+                if (!(isset($pData['idUtilisateur'])&& strlen($pData['idUtilisateur'])))
                 return false;
 
             try

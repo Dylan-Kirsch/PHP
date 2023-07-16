@@ -60,7 +60,6 @@
         </div>
     </nav>
     <main><?=$content?></main>
-    <?php afficherUtilisateurs() ?>
 
 </body>
 </html>

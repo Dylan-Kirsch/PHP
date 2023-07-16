@@ -1,8 +1,8 @@
 <div class="formulaire">
 
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
 
-        <fieldset class="form-control">
+        <fieldset class="form-control" >
 
             <legend>Création d'une galerie</legend>
             <input class="form-control" type="text" name="titre" placeholder="Titre de la galerie" value="<?=isset($_POST['titre'])?$_POST['titre']:"";?>">
@@ -35,7 +35,7 @@
 
         </fieldset>
         
-         
+        <input type="hidden" name="codesecret" value="<?=$_SESSION['codesecret'];?>">
 
 
     </form>

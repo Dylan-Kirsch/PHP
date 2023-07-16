@@ -33,17 +33,17 @@
                 afficherPhotos();
             break;
 
-        // case 'utilisateur':
+        case 'utilisateur':
 
-        //     if (isset($_GET['id']))
-        //         afficherUnUtilisateur($_GET['id']);
-        //     else
-        //         afficherUtilisateurs();
-        //     break;
+            if (isset($_GET['id']))
+                afficherUnUtilisateur($_GET['id']);
+            else
+                afficherUtilisateurs();
+            break;
 
-        // case 'ajouter-galerie':
-        //         ajouterGalerie();
-        //     break;
+        case 'ajouter-galerie':
+                ajouterGalerie();
+            break;
 
         // case 'categorie':
 
